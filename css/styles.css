@@ -1,0 +1,1930 @@
+/**
+ * GitHub Education - Student Developer Pack
+ * Main Stylesheet
+ */
+
+/* ==========================================================================
+   CSS Variables
+   ========================================================================== */
+
+:root {
+    /* Background colors */
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    
+    /* Border colors */
+    --border-color: #30363d;
+    
+    /* Text colors */
+    --text-primary: #f0f6fc;
+    --text-secondary: #8b949e;
+    
+    /* Accent colors */
+    --accent-green: #238636;
+    --accent-green-hover: #2ea043;
+    --accent-purple: #8b5cf6;
+    --accent-blue: #58a6ff;
+    --accent-orange: #f78166;
+    --accent-pink: #db61a2;
+    --accent-red: #f85149;
+    
+    /* Gradients */
+    --gradient-education: linear-gradient(135deg, #238636 0%, #2ea043 25%, #58a6ff 50%, #8b5cf6 75%, #db61a2 100%);
+}
+
+/* ==========================================================================
+   Base Styles
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Animated Background
+   ========================================================================== */
+
+.bg-animation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.bg-animation::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(35, 134, 54, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(88, 166, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 60% 60%, rgba(219, 97, 162, 0.1) 0%, transparent 40%);
+    animation: bgMove 20s ease-in-out infinite;
+}
+
+@keyframes bgMove {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-5%, 5%) rotate(2deg); }
+    50% { transform: translate(5%, -5%) rotate(-2deg); }
+    75% { transform: translate(-3%, -3%) rotate(1deg); }
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.header {
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(22, 27, 34, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.github-logo {
+    width: 40px;
+    height: 40px;
+    fill: var(--text-primary);
+}
+
+.header-title {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.education-badge {
+    background: var(--gradient-education);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+
+.hero {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.hero-icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    background: var(--gradient-education);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulse 3s ease-in-out infinite;
+    box-shadow: 
+        0 0 60px rgba(139, 92, 246, 0.3),
+        0 0 100px rgba(35, 134, 54, 0.2);
+}
+
+@keyframes pulse {
+    0%, 100% { 
+        transform: scale(1); 
+        box-shadow: 0 0 60px rgba(139, 92, 246, 0.3), 0 0 100px rgba(35, 134, 54, 0.2); 
+    }
+    50% { 
+        transform: scale(1.05); 
+        box-shadow: 0 0 80px rgba(139, 92, 246, 0.4), 0 0 120px rgba(35, 134, 54, 0.3); 
+    }
+}
+
+.hero-icon svg {
+    width: 60px;
+    height: 60px;
+    fill: white;
+}
+
+.hero h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: var(--gradient-education);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero p {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ==========================================================================
+   Feature Pills
+   ========================================================================== */
+
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.feature-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.feature-pill:hover {
+    border-color: var(--accent-purple);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.feature-pill svg {
+    width: 18px;
+    height: 18px;
+}
+
+.feature-pill.copilot svg { fill: var(--accent-purple); }
+.feature-pill.pro svg { fill: var(--accent-orange); }
+.feature-pill.student svg { fill: var(--accent-blue); }
+
+/* ==========================================================================
+   Credentials Card
+   ========================================================================== */
+
+.credentials-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 
+        0 16px 70px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.card-header {
+    padding: 24px 30px;
+    background: linear-gradient(135deg, rgba(35, 134, 54, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.card-header-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--accent-green);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-header-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: white;
+}
+
+.card-header-text h2 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.card-header-text p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.verified-badge {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    background: rgba(35, 134, 54, 0.2);
+    border: 1px solid var(--accent-green);
+    border-radius: 50px;
+    font-size: 13px;
+    color: var(--accent-green);
+    font-weight: 500;
+}
+
+.verified-badge svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+/* ==========================================================================
+   Credential Items
+   ========================================================================== */
+
+.credentials-body {
+    padding: 8px;
+}
+
+.credential-item {
+    display: flex;
+    align-items: center;
+    padding: 20px 22px;
+    margin: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.credential-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--gradient-education);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.credential-item:hover {
+    background: rgba(33, 38, 45, 0.8);
+    transform: translateX(4px);
+}
+
+.credential-item:hover::before {
+    opacity: 1;
+}
+
+.credential-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-primary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 18px;
+    flex-shrink: 0;
+}
+
+.credential-icon svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--text-secondary);
+}
+
+.credential-icon.login svg { fill: var(--accent-blue); }
+.credential-icon.password svg { fill: var(--accent-orange); }
+.credential-icon.twofa svg { fill: var(--accent-purple); }
+.credential-icon.token svg { fill: var(--accent-pink); }
+
+.credential-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.credential-label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.credential-value {
+    font-size: 17px;
+    font-weight: 500;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    word-break: break-all;
+    color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Copy Button
+   ========================================================================== */
+
+.copy-btn {
+    width: 42px;
+    height: 42px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    margin-left: 16px;
+}
+
+.copy-btn:hover {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+.copy-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-secondary);
+    transition: fill 0.2s ease;
+}
+
+.copy-btn:hover svg {
+    fill: white;
+}
+
+.copy-btn.copied {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+.copy-btn.copied svg {
+    fill: white;
+}
+
+/* ==========================================================================
+   Copy All Section
+   ========================================================================== */
+
+.copy-all-section {
+    padding: 20px 16px 16px;
+}
+
+.copy-all-btn {
+    width: 100%;
+    padding: 16px 24px;
+    background: var(--gradient-education);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(139, 92, 246, 0.3);
+}
+
+.copy-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(139, 92, 246, 0.4);
+}
+
+.copy-all-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+/* ==========================================================================
+   Info Section
+   ========================================================================== */
+
+.info-section {
+    margin-top: 40px;
+    padding: 24px;
+    background: rgba(88, 166, 255, 0.1);
+    border: 1px solid rgba(88, 166, 255, 0.3);
+    border-radius: 12px;
+}
+
+.info-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    margin-bottom: 12px;
+    color: var(--accent-blue);
+}
+
+.info-section h3 svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.info-section p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* ==========================================================================
+   Account Checker
+   ========================================================================== */
+
+.checker-section {
+    margin-top: 30px;
+}
+
+.check-btn {
+    width: 100%;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(88, 166, 255, 0.3);
+}
+
+.check-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(88, 166, 255, 0.4);
+}
+
+.check-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.check-btn svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+.check-btn.loading svg {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
+   Account Info Card
+   ========================================================================== */
+
+.account-info-card {
+    margin-top: 30px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================================
+   Status Section (2FA & Pro)
+   ========================================================================== */
+
+.status-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(35, 134, 54, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.status-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background: var(--bg-tertiary);
+    border-radius: 16px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.status-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.status-card.active {
+    border-color: var(--accent-green);
+    box-shadow: 0 0 30px rgba(35, 134, 54, 0.2);
+}
+
+.status-card.active::before {
+    background: linear-gradient(135deg, rgba(35, 134, 54, 0.1) 0%, transparent 100%);
+    opacity: 1;
+}
+
+.status-card.active.pro {
+    border-color: var(--accent-orange);
+    box-shadow: 0 0 30px rgba(247, 129, 102, 0.2);
+}
+
+.status-card.active.pro::before {
+    background: linear-gradient(135deg, rgba(247, 129, 102, 0.1) 0%, transparent 100%);
+}
+
+.status-card.inactive {
+    opacity: 0.7;
+}
+
+.status-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--bg-primary);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.status-icon svg {
+    width: 28px;
+    height: 28px;
+    fill: var(--text-secondary);
+}
+
+.status-card.active .status-icon svg {
+    fill: var(--accent-green);
+}
+
+.status-card.active.pro .status-icon svg {
+    fill: var(--accent-orange);
+}
+
+.status-content {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.status-title {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-value {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.status-card.active .status-value {
+    color: var(--accent-green);
+}
+
+.status-card.active.pro .status-value {
+    color: var(--accent-orange);
+}
+
+.status-indicator {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}
+
+.status-indicator.on {
+    background: rgba(35, 134, 54, 0.2);
+}
+
+.status-indicator.on svg {
+    fill: var(--accent-green);
+    width: 20px;
+    height: 20px;
+}
+
+.status-indicator.off {
+    background: rgba(248, 81, 73, 0.2);
+}
+
+.status-indicator.off svg {
+    fill: var(--accent-red);
+    width: 20px;
+    height: 20px;
+}
+
+.status-card.active.pro .status-indicator.on {
+    background: rgba(247, 129, 102, 0.2);
+}
+
+.status-card.active.pro .status-indicator.on svg {
+    fill: var(--accent-orange);
+}
+
+/* Copilot status card */
+.status-card.copilot.active {
+    border-color: var(--accent-purple);
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.2);
+}
+
+.status-card.copilot.active::before {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 100%);
+}
+
+.status-card.copilot.active .status-icon svg {
+    fill: var(--accent-purple);
+}
+
+.status-card.copilot.active .status-value {
+    color: var(--accent-purple);
+}
+
+.status-card.copilot.active .status-indicator.on {
+    background: rgba(139, 92, 246, 0.2);
+}
+
+.status-card.copilot.active .status-indicator.on svg {
+    fill: var(--accent-purple);
+}
+
+/* 3-column status section */
+.status-section-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media (max-width: 768px) {
+    .status-section-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Details Section
+   ========================================================================== */
+
+.account-details {
+    padding: 20px;
+}
+
+.detail-group {
+    margin-bottom: 20px;
+}
+
+.detail-group:last-child {
+    margin-bottom: 0;
+}
+
+.detail-group-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-group-title svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    background: var(--bg-tertiary);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.detail-item:last-child {
+    margin-bottom: 0;
+}
+
+.detail-item:hover {
+    background: rgba(33, 38, 45, 0.8);
+}
+
+.detail-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    flex-shrink: 0;
+}
+
+.detail-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--text-secondary);
+}
+
+.detail-icon.email svg { fill: var(--accent-blue); }
+.detail-icon.company svg { fill: var(--accent-orange); }
+.detail-icon.location svg { fill: var(--accent-green); }
+.detail-icon.calendar svg { fill: var(--accent-purple); }
+.detail-icon.link svg { fill: var(--accent-pink); }
+
+.detail-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.detail-label {
+    font-size: 11px;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.detail-value {
+    font-size: 15px;
+    color: var(--text-primary);
+    word-break: break-all;
+}
+
+.detail-value a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.detail-value a:hover {
+    text-decoration: underline;
+}
+
+.detail-badges {
+    display: flex;
+    gap: 6px;
+    margin-left: 12px;
+}
+
+.mini-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.mini-badge.primary {
+    background: rgba(139, 92, 246, 0.2);
+    color: var(--accent-purple);
+}
+
+.mini-badge.verified {
+    background: rgba(35, 134, 54, 0.2);
+    color: var(--accent-green);
+}
+
+.mini-badge.unverified {
+    background: rgba(248, 81, 73, 0.2);
+    color: var(--accent-red);
+}
+
+/* ==========================================================================
+   Activity Log
+   ========================================================================== */
+
+.activity-list {
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    overflow: hidden;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.activity-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.activity-list::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+}
+
+.activity-list::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.activity-list::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.2s ease;
+}
+
+.event-item:last-child {
+    border-bottom: none;
+}
+
+.event-item:hover {
+    background: rgba(33, 38, 45, 0.5);
+}
+
+.event-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--bg-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 14px;
+    flex-shrink: 0;
+}
+
+.event-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--accent-blue);
+    stroke: var(--accent-blue);
+    stroke-width: 2;
+}
+
+.event-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.event-description {
+    font-size: 14px;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.event-time {
+    font-size: 12px;
+    color: var(--text-secondary);
+}
+
+.no-events {
+    padding: 30px;
+    text-align: center;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+}
+
+.no-events p {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+/* ==========================================================================
+   Error States
+   ========================================================================== */
+
+.error-alert {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: rgba(248, 81, 73, 0.1);
+    border: 1px solid rgba(248, 81, 73, 0.3);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.error-alert svg {
+    width: 24px;
+    height: 24px;
+    fill: var(--accent-red);
+    flex-shrink: 0;
+}
+
+.error-alert-text h4 {
+    font-size: 15px;
+    color: var(--accent-red);
+    margin-bottom: 4px;
+}
+
+.error-alert-text p {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.error-container {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.error-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: rgba(248, 81, 73, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: var(--accent-red);
+}
+
+.error-container h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.error-container p {
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+    font-size: 13px;
+}
+
+.footer a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   Toast Notification
+   ========================================================================== */
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--accent-green);
+    color: white;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+
+/* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    .header {
+        padding: 16px 20px;
+    }
+    
+    .container {
+        padding: 40px 16px;
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .features {
+        gap: 8px;
+    }
+
+    .feature-pill {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+
+    .credential-item {
+        padding: 16px;
+        flex-wrap: wrap;
+    }
+
+    .credential-value {
+        font-size: 14px;
+    }
+
+    .copy-btn {
+        margin-left: auto;
+        margin-top: 12px;
+    }
+
+    .verified-badge {
+        display: none;
+    }
+
+    .status-section {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .status-card {
+        padding: 18px;
+    }
+
+    .status-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .status-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .status-value {
+        font-size: 18px;
+    }
+
+    .detail-badges {
+        flex-wrap: wrap;
+    }
+}
+
+/* ==========================================================================
+   Two-Column Split Layout
+   ========================================================================== */
+
+.main-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    gap: 0;
+}
+
+.panel {
+    overflow-y: auto;
+    border-right: 1px solid var(--border-color);
+}
+
+.panel:last-child {
+    border-right: none;
+}
+
+.panel-left {
+    background: var(--bg-primary);
+}
+
+.panel-right {
+    background: rgba(22, 27, 34, 0.5);
+}
+
+.panel-content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 30px;
+}
+
+/* ==========================================================================
+   Logs Panel
+   ========================================================================== */
+
+.logs-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logs-header-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-purple) 100%);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 50px rgba(88, 166, 255, 0.3);
+}
+
+.logs-header-icon svg {
+    width: 50px;
+    height: 50px;
+    stroke: white;
+    stroke-width: 2;
+    fill: none;
+}
+
+.logs-header h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logs-header p {
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   File Upload Area
+   ========================================================================== */
+
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 16px;
+    padding: 50px 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: var(--bg-secondary);
+    margin-bottom: 20px;
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+    border-color: var(--accent-purple);
+    background: rgba(139, 92, 246, 0.05);
+}
+
+.upload-area.dragover {
+    transform: scale(1.02);
+}
+
+.upload-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 20px;
+    background: var(--bg-tertiary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.upload-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: var(--accent-purple);
+}
+
+.upload-text {
+    margin-bottom: 12px;
+}
+
+.upload-text strong {
+    display: block;
+    font-size: 18px;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.upload-text span {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.upload-hint {
+    font-size: 12px;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    background: var(--bg-tertiary);
+    border-radius: 20px;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   Upload Status
+   ========================================================================== */
+
+.upload-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.upload-status:empty {
+    display: none;
+}
+
+.upload-status svg {
+    width: 20px;
+    height: 20px;
+}
+
+.upload-status.loading {
+    background: rgba(88, 166, 255, 0.1);
+    color: var(--accent-blue);
+}
+
+.upload-status.loading svg {
+    fill: var(--accent-blue);
+    stroke: var(--accent-blue);
+    animation: spin 1s linear infinite;
+}
+
+.upload-status.success {
+    background: rgba(35, 134, 54, 0.1);
+    color: var(--accent-green);
+}
+
+.upload-status.success svg {
+    fill: var(--accent-green);
+    stroke: var(--accent-green);
+}
+
+.upload-status.error {
+    background: rgba(248, 81, 73, 0.1);
+    color: var(--accent-red);
+}
+
+.upload-status.error svg {
+    fill: var(--accent-red);
+}
+
+/* ==========================================================================
+   Logs Analysis - Verification
+   ========================================================================== */
+
+.logs-analysis {
+    animation: slideUp 0.5s ease;
+}
+
+.account-origin {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.origin-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.origin-row:first-child {
+    padding-top: 0;
+}
+
+.origin-row:last-child {
+    padding-bottom: 0;
+}
+
+.origin-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    min-width: 80px;
+}
+
+.origin-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: 'SF Mono', monospace;
+}
+
+.verification-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.verification-status.status-success {
+    background: rgba(35, 134, 54, 0.15);
+    border: 1px solid var(--accent-green);
+}
+
+.verification-status.status-warning {
+    background: rgba(248, 81, 73, 0.15);
+    border: 1px solid var(--accent-red);
+}
+
+.verification-status .status-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.verification-status.status-success .status-icon {
+    background: rgba(35, 134, 54, 0.2);
+}
+
+.verification-status.status-warning .status-icon {
+    background: rgba(248, 81, 73, 0.2);
+}
+
+.verification-status .status-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.verification-status.status-success .status-icon svg {
+    fill: var(--accent-green);
+}
+
+.verification-status.status-warning .status-icon svg {
+    fill: var(--accent-red);
+}
+
+.verification-status .status-text {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.verification-status.status-success .status-text {
+    color: var(--accent-green);
+}
+
+.verification-status.status-warning .status-text {
+    color: var(--accent-red);
+}
+
+.checks-list {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.check-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.check-item:last-child {
+    border-bottom: none;
+}
+
+.check-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.check-icon svg {
+    width: 18px;
+    height: 18px;
+}
+
+.check-item.check-passed .check-icon {
+    background: rgba(35, 134, 54, 0.15);
+}
+
+.check-item.check-passed .check-icon svg {
+    fill: var(--accent-green);
+}
+
+.check-item.check-failed .check-icon {
+    background: rgba(248, 81, 73, 0.15);
+}
+
+.check-item.check-failed .check-icon svg {
+    fill: var(--accent-red);
+}
+
+.check-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.check-item.check-failed .check-label {
+    color: var(--accent-red);
+}
+
+.logs-footer {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* ==========================================================================
+   Logs Info Section
+   ========================================================================== */
+
+.logs-info {
+    margin-top: 40px;
+}
+
+.logs-info ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.logs-info li {
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.logs-info a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.logs-info a:hover {
+    text-decoration: underline;
+}
+
+.logs-info code {
+    padding: 2px 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    font-family: 'SF Mono', monospace;
+    font-size: 13px;
+    color: var(--accent-orange);
+}
+
+/* ==========================================================================
+   Responsive: Split Layout
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+    .main-split {
+        grid-template-columns: 1fr;
+    }
+    
+    .panel {
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .panel:last-child {
+        border-bottom: none;
+    }
+    
+    .logs-summary {
+        grid-template-columns: 1fr;
+    }
+    
+    .event-time {
+        min-width: 100px;
+        font-size: 10px;
+    }
+    
+    .event-row {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 768px) {
+    .panel-content {
+        padding: 30px 16px;
+    }
+    
+    .logs-header h1 {
+        font-size: 24px;
+    }
+}
+
+/* ==========================================================================
+   TOTP Section
+   ========================================================================== */
+
+.totp-section {
+    margin-top: 30px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.totp-hint {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+}
+
+.totp-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: var(--bg-primary);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.totp-display:hover {
+    background: var(--bg-tertiary);
+}
+
+.totp-display:active {
+    transform: scale(0.98);
+}
+
+.totp-code {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    font-size: 42px;
+    font-weight: 300;
+    letter-spacing: 4px;
+    color: var(--text-primary);
+}
+
+.totp-copy-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.totp-copy-icon:hover {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+.totp-copy-icon svg {
+    width: 20px;
+    height: 20px;
+    fill: var(--text-secondary);
+    transition: fill 0.2s ease;
+}
+
+.totp-copy-icon:hover svg {
+    fill: white;
+}
+
+.totp-copy-icon.copied {
+    background: var(--accent-green);
+    border-color: var(--accent-green);
+}
+
+.totp-copy-icon.copied svg {
+    fill: white;
+}
+
+.totp-progress-bar {
+    height: 8px;
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.totp-progress {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #238636, #2ea043);
+    border-radius: 4px;
+    transform-origin: center center;
+    will-change: transform;
+    transition: background 0.3s ease;
+}
+
+/* ==========================================================================
+   QR Code Section
+   ========================================================================== */
+
+.qr-section {
+    margin-top: 24px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+}
+
+.qr-header {
+    margin-bottom: 24px;
+}
+
+.qr-header h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+}
+
+.qr-header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.qr-code {
+    display: inline-block;
+    background: var(--bg-tertiary);
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+}
+
+.qr-code img {
+    display: block;
+    border-radius: 8px;
+}
+
+/* ==========================================================================
+   Auth Apps Section
+   ========================================================================== */
+
+.auth-apps-section {
+    margin-top: 30px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 24px;
+}
+
+.auth-apps-section h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.app-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.app-card {
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    transition: all 0.2s ease;
+}
+
+.app-card:hover {
+    border-color: var(--accent-purple);
+    background: var(--bg-primary);
+}
+
+.app-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.app-logo {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    flex-shrink: 0;
+    object-fit: cover;
+}
+
+.app-title {
+    flex: 1;
+    min-width: 0;
+}
+
+.app-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.app-desc {
+    display: block;
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+.app-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.store-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: all 0.2s ease;
+}
+
+.store-link:hover {
+    transform: translateY(-2px);
+}
+
+.store-link.android:hover {
+    background: #3DDC84;
+    border-color: #3DDC84;
+    color: white;
+}
+
+.store-link.ios:hover {
+    background: var(--accent-blue);
+    border-color: var(--accent-blue);
+    color: white;
+}
+
+/* ==========================================================================
+   Responsive TOTP
+   ========================================================================== */
+
+@media (max-width: 600px) {
+    .totp-code {
+        font-size: 32px;
+        letter-spacing: 2px;
+    }
+    
+    .totp-display {
+        padding: 16px 20px;
+    }
+    
+    .app-links {
+        grid-template-columns: 1fr;
+    }
+}
